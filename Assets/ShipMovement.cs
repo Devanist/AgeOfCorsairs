@@ -5,40 +5,61 @@ public class ShipMovement : MonoBehaviour {
 
     private Rigidbody2D shipRigidBody2D;
 
-    public float maxShipVelocity = 6;
+    public float currentShipForce = 0;
+    public float maxShipForce     = 50;
+    public float shipTurnPower    = 1.5f;
+    public float forceChange;
 
-    public  float shipVelocity = 0;
-    public  float shipRotationAngle = 0;
-    private float velocityChange;
+    //public float maxShipVelocity = 6;
+    //public float shipVelocity = 0;
+    //public  float shipRotationAngle = 0;
+    //private float velocityChange;
 
     //w celu plynniejszego ruszania / zwalniania
-    private bool speedUp = false;
-    private bool slowDown = false;
+    private bool speedUp     = false;
+    private bool slowDown    = false;
+    private bool rotateLeft  = false;
+    private bool rotateRight = false;
 
     void Start() {
         shipRigidBody2D = GetComponent<Rigidbody2D>();
-        velocityChange = (maxShipVelocity / 3) / 20;
+        forceChange = (maxShipForce / 3) / 20;
     }
 
     void FixedUpdate() {
 
         if(speedUp) {
-            Debug.Log("Wciskanie gory");
 
-            if (shipVelocity < maxShipVelocity) {
-                shipVelocity += velocityChange;
+            if (currentShipForce < maxShipForce) {
+                currentShipForce += forceChange;
+
             }
 
         }
         else if(slowDown) {
 
-            if(shipVelocity > -2) {
-                shipVelocity -= velocityChange;
+            if( currentShipForce > - (maxShipForce / 10) ) {
+                currentShipForce -= forceChange;
             }
             
         }
 
-        shipRigidBody2D.velocity = new Vector2(0, shipVelocity);
+        if(rotateLeft) {
+            transform.Rotate(Vector3.forward * shipTurnPower);
+
+        }
+
+        if(rotateRight) {
+            transform.Rotate(Vector3.forward * -shipTurnPower);
+
+        }
+
+        //shipRigidBody2D.MoveRotation(4);
+        shipRigidBody2D.AddForce(transform.up * currentShipForce);
+        //shipRigidBody2D.velocity = new Vector2(0, shipVelocity);
+        //shipRigidBody2D.AddForce(transform.up);
+        //shipRigidBody2D.
+        //shipRigidBody2D.MoveRotation(4);
         /*
         if (Input.GetKey(KeyCode.UpArrow)) {
             shipRigidBody2D.velocity = new Vector2(0, shipSpeed);
@@ -62,6 +83,25 @@ public class ShipMovement : MonoBehaviour {
     public void goBackwardReleased() {
         slowDown = false;
     }
+
+    public void rotateLeftPressed() {
+        rotateLeft = true;
+    }
+
+    public void rotateLeftReleased() {
+        rotateLeft = false;
+    }
+
+    public void rotateRightPressed() {
+        rotateRight = true;
+    }
+
+    public void rotateRightReleased() {
+        rotateRight = false;
+    }
+
+
+
 }
 
 
