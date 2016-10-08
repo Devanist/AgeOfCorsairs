@@ -67,8 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CameraFollow.cs" />
-    <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\ShipMovement.cs" />
+    <Compile Include="Assets\TerritoryController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Textures\tile.shader" />

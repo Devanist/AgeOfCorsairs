@@ -5,10 +5,10 @@ public class ShipMovement : MonoBehaviour {
 
     private Rigidbody2D shipRigidBody2D;
 
-    public float currentShipForce = 0;
-    public float maxShipForce     = 50;
-    public float shipTurnPower    = 1.5f;
-    public float forceChange;
+    private float currentShipForce = 0;
+    public  float maxShipForce     = 100;
+    public  float shipTurnPower    = 1.5f;
+    public  float forceChange;
 
     //public float maxShipVelocity = 6;
     //public float shipVelocity = 0;
@@ -23,6 +23,7 @@ public class ShipMovement : MonoBehaviour {
 
     void Start() {
         shipRigidBody2D = GetComponent<Rigidbody2D>();
+        //shipRigidBody2D.centerOfMass = new Vector3(0, -0.5f, 0);
         forceChange = (maxShipForce / 3) / 20;
     }
 
