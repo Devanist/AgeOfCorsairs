@@ -25,9 +25,10 @@ public class TerritoryController : MonoBehaviour {
         else if (collider.tag == "Friendly Island") {
             territoryText.text = "Jestes na przyjaznym terytorium";
         }
-        else {
-            territoryText.text = "Jestes na niczyim terytorium";
-        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider) {
+        territoryText.text = "Jestes na niczyim terytorium";
     }
 
 }

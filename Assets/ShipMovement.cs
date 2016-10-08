@@ -39,7 +39,7 @@ public class ShipMovement : MonoBehaviour {
         }
         else if(slowDown) {
 
-            if( currentShipForce > - (maxShipForce / 10) ) {
+            if( currentShipForce > - (maxShipForce / 5) ) {
                 currentShipForce -= forceChange;
             }
             
