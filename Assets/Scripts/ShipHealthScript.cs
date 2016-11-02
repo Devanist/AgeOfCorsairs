@@ -11,7 +11,6 @@ public class ShipHealthScript : MonoBehaviour
     void Awake()
     {
         currentHealth = startingHealth;
-        
     }
 
     void Start ()
