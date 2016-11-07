@@ -6,8 +6,8 @@ using System;
 public class ShipSpeedScript : MonoBehaviour
 {
     public Rigidbody2D shipRigidBody2D;
-    public float startingSpeed = 0;
-    public float currentSpeed;
+    public double startingSpeed = 0;
+    public double currentSpeed;
     public Text currentSpeedText;
 
     private Vector2 oldShipPos;
@@ -18,26 +18,22 @@ public class ShipSpeedScript : MonoBehaviour
         currentSpeed = startingSpeed;
         oldShipPos = shipRigidBody2D.position;
     }
-	
+
 	void Update ()
     {
-        Vector2 shipPos= shipRigidBody2D.position;
+        Vector2 shipPos = shipRigidBody2D.position;
         if (shipPos.x != oldShipPos.x || shipPos.y != oldShipPos.y)
         {
-            currentSpeed = getCurrentSpeed(shipPos, oldShipPos);
+            double currentShipForce = ShipMovement.currentShipForce;
+            currentSpeed = getCurrentSpeed(currentShipForce);
         }
-        currentSpeedText.text = Math.Round(currentSpeed,2).ToString();
+        currentSpeedText.text = Math.Round(currentSpeed, 2).ToString();
         oldShipPos = shipPos;
     }
 
-    private float getCurrentSpeed(Vector2 shipPos, Vector2 oldShipPos)
+    private double getCurrentSpeed(double currentShipForce)
     {
-        return distanceBetweenPoints(shipPos, oldShipPos) * 60;
-    }
-
-    private float distanceBetweenPoints(Vector2 A, Vector2 B)
-    {
-        return (float)Math.Sqrt((B.x - A.x) * (B.x - A.x) + (B.y - A.y) * (B.y - A.y));
+        return currentShipForce/12.5;
     }
 }
 

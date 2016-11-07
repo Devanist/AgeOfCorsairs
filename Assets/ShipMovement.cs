@@ -5,7 +5,7 @@ public class ShipMovement : MonoBehaviour {
 
     private Rigidbody2D shipRigidBody2D;
 
-    private float currentShipForce = 0;
+    public  static float currentShipForce = 0;
     public  float maxShipForce     = 100;
     public  float shipTurnPower    = 1.5f;
     public  float forceChange;
@@ -100,8 +100,6 @@ public class ShipMovement : MonoBehaviour {
     public void rotateRightReleased() {
         rotateRight = false;
     }
-
-
 
 }
 
