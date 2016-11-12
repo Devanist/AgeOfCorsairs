@@ -3,19 +3,35 @@ using System.Collections;
 
 public class CityMenuController : MonoBehaviour {
 
-    GameObject CityMenu;
-    GameObject HUD;
-    GameObject ButtonPanel;
+    GameObject cityMenu;
+    GameObject shopMenu;
+    GameObject tavernMenu;
+    GameObject shipyardMenu;
 
-	// Use this for initialization
-	void Start () {
-        CityMenu = GameObject.FindGameObjectsWithTag("City Menu")[0];
-        HUD = GameObject.FindGameObjectsWithTag("HUD")[0];
-        ButtonPanel = GameObject.FindGameObjectsWithTag("Button Panel")[0];
+    GameObject hud;
+    GameObject buttonPanel;
 
-        CityMenu.SetActive(false);
-        HUD.SetActive(false);
-        ButtonPanel.SetActive(false);
+    public GameObject EnterCityButton;
+    // Aktywuje sie po wejsciu w submenu, zeby przyslonic inne buttony i nie pozwolic
+    // na otworzenie kilku submenu jedno za drugim
+    public GameObject ButtonBlocker;
+
+    /**
+     * Pobieranie GameObjectow, chowanie menu miasta na poczatku gry
+     **/
+    void Start () {
+        cityMenu = GameObject.FindGameObjectsWithTag("City Menu")[0];
+        shopMenu = GameObject.FindGameObjectsWithTag("Shop Menu")[0];
+        tavernMenu = GameObject.FindGameObjectsWithTag("Tavern Menu")[0];
+        shipyardMenu = GameObject.FindGameObjectsWithTag("Shipyard Menu")[0];
+
+        hud = GameObject.FindGameObjectsWithTag("HUD")[0];
+        buttonPanel = GameObject.FindGameObjectsWithTag("Button Panel")[0];
+
+        cityMenu.SetActive(false);
+        shopMenu.SetActive(false);
+        tavernMenu.SetActive(false);
+        shipyardMenu.SetActive(false);
 
     }
 	
@@ -29,15 +45,62 @@ public class CityMenuController : MonoBehaviour {
      * Powinna tez zostac dodana jakas pauza na czas przebywania w menu 
      **/
     public void openCityMenu() {
-        CityMenu.SetActive(true);
-        HUD.SetActive(false);
-        ButtonPanel.SetActive(false);
+        cityMenu.SetActive(true);
+
+        hud.SetActive(false);
+        buttonPanel.SetActive(false);
+        EnterCityButton.SetActive(false);
+
+        ButtonBlocker.SetActive(false);
     }
 
     public void closeCityMenu() {
-        CityMenu.SetActive(false);
-        HUD.SetActive(true);
-        ButtonPanel.SetActive(true);
+        cityMenu.SetActive(false);
+        shopMenu.SetActive(false);
+        tavernMenu.SetActive(false);
+        shipyardMenu.SetActive(false);
+
+        hud.SetActive(true);
+        buttonPanel.SetActive(true);
+        EnterCityButton.SetActive(true);
     }
 
+    /**
+     * Otwieranie i zamykanie menu sklepu
+     **/
+    public void openShopMenu() {
+        shopMenu.SetActive(true);
+        ButtonBlocker.SetActive(true);
+    }
+
+    public void closeShopMenu() {
+        shopMenu.SetActive(false);
+        ButtonBlocker.SetActive(false);
+    }
+
+    /**
+     * Otwieranie i zamykanie menu tawerny
+     **/
+    public void openTavernMenu() {
+        tavernMenu.SetActive(true);
+        ButtonBlocker.SetActive(true);
+    }
+
+    public void closeTavernMenu() {
+        tavernMenu.SetActive(false);
+        ButtonBlocker.SetActive(false);
+    }
+
+    /**
+     * Otwieranie i zamykanie menu stoczni
+     **/
+    public void openShipyardMenu() {
+        shipyardMenu.SetActive(true);
+        ButtonBlocker.SetActive(true);
+    }
+
+    public void closeShipyardMenu() {
+        shipyardMenu.SetActive(false);
+        ButtonBlocker.SetActive(false);
+    }
 }

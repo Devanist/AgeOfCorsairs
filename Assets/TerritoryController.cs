@@ -22,12 +22,13 @@ public class TerritoryController : MonoBehaviour {
 	
 	}
 
-    // Wplyniecie do miasta
+    /**
+     * Obsluga wplyniecia do miasta
+     **/
     void OnTriggerEnter2D(Collider2D collider) {
 
         if (collider.tag == "Friendly City") {
             enterCityButton.SetActive(true);
-            //territoryText.text = "Wplynales do miasta";
         }
     }
 
