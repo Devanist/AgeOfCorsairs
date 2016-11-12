@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class TerritoryController : MonoBehaviour {
 
     public Text territoryText;
+    public GameObject enterCityButton;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,15 @@ public class TerritoryController : MonoBehaviour {
 	
 	}
 
+    // Wplyniecie do miasta
+    void OnTriggerEnter2D(Collider2D collider) {
+
+        if (collider.tag == "Friendly City") {
+            enterCityButton.SetActive(true);
+            //territoryText.text = "Wplynales do miasta";
+        }
+    }
+
     void OnTriggerStay2D(Collider2D collider) {
 
         if (collider.tag == "Enemy Island") {
@@ -25,9 +35,16 @@ public class TerritoryController : MonoBehaviour {
         else if (collider.tag == "Friendly Island") {
             territoryText.text = "Jestes na przyjaznym terytorium";
         }
+
     }
 
     void OnTriggerExit2D(Collider2D collider) {
+
+        if (collider.tag == "Friendly City") {
+            enterCityButton.SetActive(false);
+            //territoryText.text = "Wyplynales z miasta";
+        }
+
         territoryText.text = "Jestes na niczyim terytorium";
     }
 
