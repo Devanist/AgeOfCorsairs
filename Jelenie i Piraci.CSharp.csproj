@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CameraFollow.cs" />
+    <Compile Include="Assets\CityMenuController.cs" />
     <Compile Include="Assets\Enums\CannonOrientation.cs" />
     <Compile Include="Assets\Enums\ShootingPosition.cs" />
     <Compile Include="Assets\MenuController.cs" />

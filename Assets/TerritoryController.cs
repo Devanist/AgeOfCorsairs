@@ -11,6 +11,10 @@ public class TerritoryController : MonoBehaviour {
 	void Start () {
         territoryText.text = "xxx";
 
+        // Deaktywacja buttona od miasta
+        enterCityButton.SetActive(false);
+
+
     }
 	
 	// Update is called once per frame
