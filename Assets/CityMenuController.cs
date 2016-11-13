@@ -7,6 +7,7 @@ public class CityMenuController : MonoBehaviour {
     GameObject shopMenu;
     GameObject tavernMenu;
     GameObject shipyardMenu;
+    GameObject cityFrame;
 
     GameObject hud;
     GameObject buttonPanel;
@@ -24,6 +25,7 @@ public class CityMenuController : MonoBehaviour {
         shopMenu = GameObject.FindGameObjectsWithTag("Shop Menu")[0];
         tavernMenu = GameObject.FindGameObjectsWithTag("Tavern Menu")[0];
         shipyardMenu = GameObject.FindGameObjectsWithTag("Shipyard Menu")[0];
+        cityFrame = GameObject.FindGameObjectsWithTag("CityViewFrame")[0];
 
         hud = GameObject.FindGameObjectsWithTag("HUD")[0];
         buttonPanel = GameObject.FindGameObjectsWithTag("Button Panel")[0];
@@ -32,6 +34,7 @@ public class CityMenuController : MonoBehaviour {
         shopMenu.SetActive(false);
         tavernMenu.SetActive(false);
         shipyardMenu.SetActive(false);
+        cityFrame.SetActive(false);
 
     }
 	
@@ -46,6 +49,7 @@ public class CityMenuController : MonoBehaviour {
      **/
     public void openCityMenu() {
         cityMenu.SetActive(true);
+        cityFrame.SetActive(true);
 
         hud.SetActive(false);
         buttonPanel.SetActive(false);
@@ -59,6 +63,7 @@ public class CityMenuController : MonoBehaviour {
         shopMenu.SetActive(false);
         tavernMenu.SetActive(false);
         shipyardMenu.SetActive(false);
+        cityFrame.SetActive(false);
 
         hud.SetActive(true);
         buttonPanel.SetActive(true);
