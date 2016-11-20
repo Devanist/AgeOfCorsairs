@@ -21,15 +21,40 @@ public class ShipMovement : MonoBehaviour {
     private bool rotateLeft  = false;
     private bool rotateRight = false;
 
+    //aby ciagle nie nastawiac zmiennej zwiazanej z czasem
+    private bool justUnpaused = false;
+
     void Start() {
         shipRigidBody2D = GetComponent<Rigidbody2D>();
         //shipRigidBody2D.centerOfMass = new Vector3(0, -0.5f, 0);
         forceChange = (maxShipForce / 3) / 20;
     }
 
+    /**
+     * Time.timeScale ustawione na 0 zatrzymuje czas i pauzuje fizyke, a przez to teoretycznie gre
+     * (o ile nie zrobimy czegos, co nie operuje na fizyce, wtedy bedzie to trzeba zapauzowac inaczej,
+     * np ifem jak ponizej sprawdzajacym stan). Musialem to wrzucic w Update(), bo w FixedUpdate, 
+     * gdy Time.timeScale zostalo ustawione na 0, to juz wiecej sie nie wywolywalo. 
+     **/
+    void Update() {
+
+        if (GameStateController.gameState == GameStateController.GameState.PLAYING) {
+
+            if (justUnpaused) {
+                Time.timeScale = 1;
+                justUnpaused = false;
+            }
+        }
+        else {
+            Time.timeScale = 0;
+            justUnpaused = true;
+        }
+
+    }
+
     void FixedUpdate() {
 
-        if(speedUp) {
+        if (speedUp) {
 
             if (currentShipForce < maxShipForce) {
                 currentShipForce += forceChange;
@@ -37,20 +62,20 @@ public class ShipMovement : MonoBehaviour {
             }
 
         }
-        else if(slowDown) {
+        else if (slowDown) {
 
-            if( currentShipForce > - (maxShipForce / 5) ) {
+            if (currentShipForce > -(maxShipForce / 5)) {
                 currentShipForce -= forceChange;
             }
-            
+
         }
 
-        if(rotateLeft) {
+        if (rotateLeft) {
             transform.Rotate(Vector3.forward * shipTurnPower);
 
         }
 
-        if(rotateRight) {
+        if (rotateRight) {
             transform.Rotate(Vector3.forward * -shipTurnPower);
 
         }
@@ -66,6 +91,7 @@ public class ShipMovement : MonoBehaviour {
             shipRigidBody2D.velocity = new Vector2(0, shipSpeed);
         }
         */
+
     }
 
     //Funkcje wywolywane w czasie nastapienia eventu zwiazanego ze sterowaniem dotykowym

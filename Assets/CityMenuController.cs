@@ -8,6 +8,7 @@ public class CityMenuController : MonoBehaviour {
     GameObject tavernMenu;
     GameObject shipyardMenu;
     GameObject cityFrame;
+    GameObject pauseMenuButton;
 
     GameObject hud;
     GameObject buttonPanel;
@@ -21,20 +22,22 @@ public class CityMenuController : MonoBehaviour {
      * Pobieranie GameObjectow, chowanie menu miasta na poczatku gry
      **/
     void Start () {
-        cityMenu = GameObject.FindGameObjectsWithTag("City Menu")[0];
-        shopMenu = GameObject.FindGameObjectsWithTag("Shop Menu")[0];
-        tavernMenu = GameObject.FindGameObjectsWithTag("Tavern Menu")[0];
+        cityMenu     = GameObject.FindGameObjectsWithTag("City Menu")[0];
+        shopMenu     = GameObject.FindGameObjectsWithTag("Shop Menu")[0];
+        tavernMenu   = GameObject.FindGameObjectsWithTag("Tavern Menu")[0];
         shipyardMenu = GameObject.FindGameObjectsWithTag("Shipyard Menu")[0];
-        cityFrame = GameObject.FindGameObjectsWithTag("CityViewFrame")[0];
+        cityFrame    = GameObject.FindGameObjectsWithTag("CityViewFrame")[0];
 
-        hud = GameObject.FindGameObjectsWithTag("HUD")[0];
-        buttonPanel = GameObject.FindGameObjectsWithTag("Button Panel")[0];
+        hud             = GameObject.FindGameObjectsWithTag("HUD")[0];
+        buttonPanel     = GameObject.FindGameObjectsWithTag("Button Panel")[0];
+        pauseMenuButton = GameObject.FindGameObjectsWithTag("Pause Menu Button")[0];
 
         cityMenu.SetActive(false);
         shopMenu.SetActive(false);
         tavernMenu.SetActive(false);
         shipyardMenu.SetActive(false);
         cityFrame.SetActive(false);
+
 
     }
 	
@@ -48,11 +51,14 @@ public class CityMenuController : MonoBehaviour {
      * Powinna tez zostac dodana jakas pauza na czas przebywania w menu 
      **/
     public void openCityMenu() {
+        GameStateController.gameState = GameStateController.GameState.PAUSED;
+
         cityMenu.SetActive(true);
         cityFrame.SetActive(true);
 
         hud.SetActive(false);
         buttonPanel.SetActive(false);
+        pauseMenuButton.SetActive(false);
         EnterCityButton.SetActive(false);
 
         ButtonBlocker.SetActive(false);
@@ -67,7 +73,10 @@ public class CityMenuController : MonoBehaviour {
 
         hud.SetActive(true);
         buttonPanel.SetActive(true);
+        pauseMenuButton.SetActive(true);
         EnterCityButton.SetActive(true);
+
+        GameStateController.gameState = GameStateController.GameState.PLAYING;
     }
 
     /**
