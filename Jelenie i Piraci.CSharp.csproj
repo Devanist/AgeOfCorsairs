@@ -71,6 +71,7 @@
     <Compile Include="Assets\Enums\CannonOrientation.cs" />
     <Compile Include="Assets\Enums\ItemType.cs" />
     <Compile Include="Assets\Enums\ShootingPosition.cs" />
+    <Compile Include="Assets\FortShootingScript.cs" />
     <Compile Include="Assets\GameStateController.cs" />
     <Compile Include="Assets\MenuController.cs" />
     <Compile Include="Assets\Models\Items\Gunpowder.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Models\Warehouse.cs" />
     <Compile Include="Assets\PauseMenuController.cs" />
     <Compile Include="Assets\Scripts\BulletMoveScript.cs" />
+    <Compile Include="Assets\Scripts\MortarBulletMoveScript.cs" />
     <Compile Include="Assets\Scripts\ShipCrewScript.cs" />
     <Compile Include="Assets\Scripts\ShipHealthScript.cs" />
     <Compile Include="Assets\Scripts\ShipShootingScript.cs" />
