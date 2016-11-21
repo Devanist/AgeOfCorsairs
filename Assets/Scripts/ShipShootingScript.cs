@@ -14,8 +14,9 @@ public class ShipShootingScript : MonoBehaviour
     private float _shipWidth;
     private int _activeCannonAmmount;
     private CannonOrientation _cannonOrientation;
+    private float Range;
 
-    public float Range = 4f;
+    public float BaseRange = 4f;
     public GameObject Bullet;
     public ShootingPosition ShootingPosition = ShootingPosition.Left;
     public int RightCannonAmount = 4;
@@ -31,8 +32,9 @@ public class ShipShootingScript : MonoBehaviour
         _shipHeight = _renderer.bounds.size.y;
         _shipWidth = _renderer.bounds.size.x;
 
+        Range = BaseRange;
         if (ShootingPosition == ShootingPosition.Left || ShootingPosition == ShootingPosition.Back)
-            Range *= -1;
+            Range = -BaseRange;
 
         _activeCannonAmmount = GetCannonAmmountByShootingPosition();
         _cannonOrientation = GetCannonOrientationByShootingPosition();
@@ -50,6 +52,25 @@ public class ShipShootingScript : MonoBehaviour
     public void changeShootingDirection(int p) {
         Debug.Log("changing direction");
         ShootingPosition = (Assets.Enums.ShootingPosition)p;
+        switch (ShootingPosition) {
+            case ShootingPosition.Left:
+                Range = -BaseRange;
+                break;
+            case ShootingPosition.Right:
+                Range = BaseRange;
+                break;
+            case ShootingPosition.Front:
+                Range = BaseRange;
+                break;
+            case ShootingPosition.Back:
+                Range = -BaseRange;
+                break;
+        }
+
+        _activeCannonAmmount = GetCannonAmmountByShootingPosition();
+        _cannonOrientation = GetCannonOrientationByShootingPosition();
+
+        GenerateBulletPool();
     }
 
     private void Fire()
