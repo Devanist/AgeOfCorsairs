@@ -47,6 +47,11 @@ public class ShipShootingScript : MonoBehaviour
             Fire();
     }
 
+    public void changeShootingDirection(int p) {
+        Debug.Log("changing direction");
+        ShootingPosition = (Assets.Enums.ShootingPosition)p;
+    }
+
     private void Fire()
     {
         var currentTransform = transform.localRotation;
