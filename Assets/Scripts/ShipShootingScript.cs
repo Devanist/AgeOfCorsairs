@@ -73,7 +73,7 @@ public class ShipShootingScript : MonoBehaviour
         GenerateBulletPool();
     }
 
-    private void Fire()
+    public void Fire()
     {
         var currentTransform = transform.localRotation;
         transform.localRotation = new Quaternion(0, 0, 0, 1);
