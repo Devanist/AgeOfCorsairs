@@ -10,8 +10,8 @@ namespace Assets.Models.Items
     {
         public Gunpowder()
         {
-            Name = ItemType.Gunpowder.ToString();
-            ItemType = ItemType.Gunpowder;
+            Name = ItemType.Rum.ToString();
+            ItemType = ItemType.Rum;
         }
     }
 }

@@ -7,6 +7,10 @@ namespace Assets.Enums
 {
     public enum ItemType
     {
-        Gunpowder
+        Gunpowder,
+        Rum,
+        Spices,
+        Tobacco,
+        Cotton
     }
 }
