@@ -51,16 +51,16 @@ public class TradeScript : MonoBehaviour
     void Update()
     {
         GunpowderTotalAmountBuyText.text =
-            ItemsToBuy.Single(i => i.ItemType == ItemType.Gunpowder).Amount.ToString();
+            ItemsToBuy.Single(i => i.ItemType == ItemType.Rum).Amount.ToString();
 
         GunpowderTotalAmountSellText.text =
-           ItemsToSell.Single(i => i.ItemType == ItemType.Gunpowder).Amount.ToString();
+           ItemsToSell.Single(i => i.ItemType == ItemType.Rum).Amount.ToString();
 
         GunpowderTradeAmountBuyText.text =
-            ItemsToBuy.Single(i => i.ItemType == ItemType.Gunpowder).TradeAmount.ToString();
+            ItemsToBuy.Single(i => i.ItemType == ItemType.Rum).TradeAmount.ToString();
 
         GunpowderTradeAmountSellText.text =
-           ItemsToSell.Single(i => i.ItemType == ItemType.Gunpowder).TradeAmount.ToString();
+           ItemsToSell.Single(i => i.ItemType == ItemType.Rum).TradeAmount.ToString();
     }
 
     public void AcceptTrade()
