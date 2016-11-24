@@ -41,7 +41,7 @@ public class ShopItemButtons : MonoBehaviour
 
             panel.transform.SetParent(ItemsPanel.transform, false);
             panel.transform.localScale = new Vector3(1, 1, 1);
-            panel.transform.localPosition = new Vector3(0,0 - i*70,0);
+            panel.transform.localPosition = new Vector3(0, 0 - i * 70, 0);
 
             i++;
         }
