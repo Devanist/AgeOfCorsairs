@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ShopItemButtons : MonoBehaviour
 {
     private TradeScript _tradeScript;
+    private RectTransform _itemsPanelRectTransform;
 
     public GameObject ItemPanelPrefab;
     public GameObject ItemsPanel;
@@ -15,6 +16,8 @@ public class ShopItemButtons : MonoBehaviour
     void Start()
     {
         _tradeScript = ItemsPanel.GetComponent<TradeScript>();
+
+        _itemsPanelRectTransform = ItemsPanel.GetComponent<RectTransform>();
 
         GenerateItemsButtons();
     }
@@ -42,6 +45,8 @@ public class ShopItemButtons : MonoBehaviour
             panel.transform.SetParent(ItemsPanel.transform, false);
             panel.transform.localScale = new Vector3(1, 1, 1);
             panel.transform.localPosition = new Vector3(0, 0 - i * 70, 0);
+
+            _itemsPanelRectTransform.sizeDelta = new Vector2(_itemsPanelRectTransform.sizeDelta.x, _itemsPanelRectTransform.sizeDelta.y + 70);
 
             i++;
         }
