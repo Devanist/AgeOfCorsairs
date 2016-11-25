@@ -58,6 +58,10 @@ public class ShipStats : MonoBehaviour {
 	
 	}
 
+    public float Endurance() {
+        return _Endurance;
+    }
+
     void UpdateStats() {
 
         _MaxSpeed = _BaseMaxSpeed;

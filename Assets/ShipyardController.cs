@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using Assets.Models;
 
 public class ShipyardController : MonoBehaviour {
 
@@ -8,10 +10,21 @@ public class ShipyardController : MonoBehaviour {
                 RepairsButton,
                 ShipsPanel,
                 UpgradesPanel,
-                RepairsPanel;
+                RepairsPanel,
+                RepairsCostText,
+                RepairsCostTextOutline,
+                Player;
 
-	// Use this for initialization
-	void Start () {
+    int repairCosts;
+
+    void Awake() {
+        Player = GameObject.Find("Ship");
+        RepairsCostText = GameObject.Find("RepairCostText");
+        RepairsCostTextOutline = GameObject.Find("RepairCostTextOutline");
+    }
+
+    // Use this for initialization
+    void Start () {
         ShipsButton = GameObject.Find("ShipsButton");
         UpgradesButton = GameObject.Find("UpgradesButton");
         ShipsPanel = GameObject.Find("ShipsPanel");
@@ -25,8 +38,16 @@ public class ShipyardController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    
 	}
+
+    public void calculateRepairCosts() {
+        repairCosts = Player.GetComponent<ShipHealthScript>().startingHealth - Player.GetComponent<ShipHealthScript>().currentHealth;
+        repairCosts *= (int)(Player.GetComponent<ShipStats>().Endurance() / 2);
+
+        RepairsCostText.GetComponent<Text>().text = repairCosts.ToString();
+        RepairsCostTextOutline.GetComponent<Text>().text = repairCosts.ToString();
+    }
 
     public void onShipsClick() {
         UpgradesPanel.SetActive(false);
@@ -44,5 +65,15 @@ public class ShipyardController : MonoBehaviour {
         UpgradesPanel.SetActive(false);
         ShipsPanel.SetActive(false);
         RepairsPanel.SetActive(true);
+    }
+
+    public void RepairHandler() {
+        if(Player.GetComponent<Wallet>().CashAmount >= repairCosts) {
+
+            Player.GetComponent<ShipHealthScript>().currentHealth = Player.GetComponent<ShipHealthScript>().startingHealth;
+            Player.GetComponent<Wallet>().changeAmount(-repairCosts);
+            calculateRepairCosts();
+
+        }
     }
 }
