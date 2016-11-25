@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ShipyardController : MonoBehaviour {
 
-    GameObject ShipsButton,
+    GameObject  ShipsButton,
                 UpgradesButton,
                 RepairsButton,
                 ShipsPanel,
