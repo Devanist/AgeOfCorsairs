@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 /**
  * Skrypt odpowiadajacy za przechowywanie stanow gry
  **/
 public class GameStateController : MonoBehaviour {
+
+    public Text territoryText;
 
     /**
      * Enum zawierajacy stany gry
@@ -24,6 +27,6 @@ public class GameStateController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        territoryText.text = "Stan gry: " + gameState.ToString();
+    }
 }

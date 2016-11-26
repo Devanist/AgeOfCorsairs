@@ -7,7 +7,7 @@ public class ShipSpeedScript : MonoBehaviour
 {
     public Rigidbody2D shipRigidBody2D;
     public double startingSpeed = 0;
-    public double currentSpeed;
+    public double currentSpeed = 0;
     public Text currentSpeedText;
 
     private Vector2 oldShipPos;

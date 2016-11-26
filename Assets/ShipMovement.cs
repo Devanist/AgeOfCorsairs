@@ -25,6 +25,9 @@ public class ShipMovement : MonoBehaviour {
     private bool justUnpaused = false;
 
     void Start() {
+        // Przez to, ze jest static, to trzeba zerowac sile przy kazdym uruchomieniu tej sceny
+        currentShipForce = 0;
+        Time.timeScale = 1;
         shipRigidBody2D = GetComponent<Rigidbody2D>();
         //shipRigidBody2D.centerOfMass = new Vector3(0, -0.5f, 0);
         forceChange = (maxShipForce / 3) / 20;

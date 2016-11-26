@@ -47,8 +47,12 @@ public class PauseMenuController : MonoBehaviour {
 
         GameStateController.gameState = GameStateController.GameState.PLAYING;
     }
-
+    
+    /**
+     * Funkcja zmienianaca scene na menu glowne.
+     **/
     public void GoToMainMenu() {
+        GameStateController.gameState = GameStateController.GameState.PLAYING;
         SceneManager.LoadScene("mainMenu");
     }
 }
