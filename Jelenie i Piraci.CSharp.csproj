@@ -74,8 +74,8 @@
     <Compile Include="Assets\FortShootingScript.cs" />
     <Compile Include="Assets\GameStateController.cs" />
     <Compile Include="Assets\MenuController.cs" />
-    <Compile Include="Assets\Models\Items\Gunpowder.cs" />
     <Compile Include="Assets\Models\Items\Item.cs" />
+    <Compile Include="Assets\Models\Items\ShopItemPanel.cs" />
     <Compile Include="Assets\Models\Items\TradeItem.cs" />
     <Compile Include="Assets\Models\Wallet.cs" />
     <Compile Include="Assets\Models\Warehouse.cs" />
@@ -86,8 +86,11 @@
     <Compile Include="Assets\Scripts\ShipHealthScript.cs" />
     <Compile Include="Assets\Scripts\ShipShootingScript.cs" />
     <Compile Include="Assets\Scripts\ShipSpeedScript.cs" />
+    <Compile Include="Assets\Scripts\ShopItemButtons.cs" />
     <Compile Include="Assets\Scripts\TradeScript.cs" />
     <Compile Include="Assets\ShipMovement.cs" />
+    <Compile Include="Assets\ShipStats.cs" />
+    <Compile Include="Assets\ShipyardController.cs" />
     <Compile Include="Assets\SplashScreenController.cs" />
     <Compile Include="Assets\TerritoryController.cs" />
   </ItemGroup>

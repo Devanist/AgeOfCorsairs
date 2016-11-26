@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 /**
  * Pokazywanie / chowanie menu pauzy, pauzowanie gry
@@ -45,5 +46,9 @@ public class PauseMenuController : MonoBehaviour {
         }
 
         GameStateController.gameState = GameStateController.GameState.PLAYING;
+    }
+
+    public void GoToMainMenu() {
+        SceneManager.LoadScene("mainMenu");
     }
 }
