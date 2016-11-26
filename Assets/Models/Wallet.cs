@@ -8,9 +8,9 @@ namespace Assets.Models
 {
     public class Wallet : MonoBehaviour
     {
-        public float CashAmount;
+        public int CashAmount;
 
-        public void changeAmount(float by) {
+        public void ChangeAmount(int by) {
             CashAmount += by;
         }
     }

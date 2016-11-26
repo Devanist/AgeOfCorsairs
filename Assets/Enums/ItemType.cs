@@ -11,8 +11,6 @@ namespace Assets.Enums
         Rum,
         Spices,
         Tobacco,
-        Cotton,
-        Dupa,
-        dupa2
+        Cotton
     }
 }

@@ -71,7 +71,7 @@ public class ShipyardController : MonoBehaviour {
         if(Player.GetComponent<Wallet>().CashAmount >= repairCosts) {
 
             Player.GetComponent<ShipHealthScript>().currentHealth = Player.GetComponent<ShipHealthScript>().startingHealth;
-            Player.GetComponent<Wallet>().changeAmount(-repairCosts);
+            Player.GetComponent<Wallet>().ChangeAmount(-repairCosts);
             calculateRepairCosts();
 
         }
