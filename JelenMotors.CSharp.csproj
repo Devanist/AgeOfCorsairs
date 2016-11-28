@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -78,6 +76,7 @@
     <Compile Include="Assets\CityMenuController.cs" />
     <Compile Include="Assets\Enums\CannonOrientation.cs" />
     <Compile Include="Assets\Enums\ItemType.cs" />
+    <Compile Include="Assets\Enums\ShipSide.cs" />
     <Compile Include="Assets\Enums\ShootingPosition.cs" />
     <Compile Include="Assets\FortShootingScript.cs" />
     <Compile Include="Assets\GameStateController.cs" />
@@ -90,11 +89,13 @@
     <Compile Include="Assets\PauseMenuController.cs" />
     <Compile Include="Assets\Scripts\BulletMoveScript.cs" />
     <Compile Include="Assets\Scripts\MortarBulletMoveScript.cs" />
+    <Compile Include="Assets\Scripts\ShipCollisionScript.cs" />
     <Compile Include="Assets\Scripts\ShipCrewScript.cs" />
     <Compile Include="Assets\Scripts\ShipHealthScript.cs" />
     <Compile Include="Assets\Scripts\ShipShootingScript.cs" />
     <Compile Include="Assets\Scripts\ShipSpeedScript.cs" />
     <Compile Include="Assets\Scripts\ShopItemButtons.cs" />
+    <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\TradeScript.cs" />
     <Compile Include="Assets\ShipMovement.cs" />
     <Compile Include="Assets\ShipStats.cs" />
