@@ -97,6 +97,7 @@ void Start () {
                 bulletMoveScript.TargetPosition = bulletTargetPosition;
 
                 _mortarBullets[i].SetActive(true);
+                SoundManager.instance.CannonFire();
             }
 
         }
@@ -139,6 +140,7 @@ void Start () {
 
                 bulletMoveScript.TargetPosition = bulletTargetPosition;
                 _bullets[i].SetActive(true);
+                SoundManager.instance.CannonFire();
             }
 
         }

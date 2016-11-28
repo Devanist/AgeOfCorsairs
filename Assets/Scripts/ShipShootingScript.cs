@@ -130,6 +130,7 @@ public class ShipShootingScript : MonoBehaviour
                 bulletMoveScript.TargetPosition = bulletTargetPosition;
 
                 _bullets[i].SetActive(true);
+                SoundManager.instance.CannonFire();
 
             }
         }
@@ -195,7 +196,6 @@ public class ShipShootingScript : MonoBehaviour
     private void GenerateBulletPool()
     {
         _bullets = new List<GameObject>();
-
         for (int i = 0; i < _activeCannonAmmount; i++)
         {
             var bullet = Instantiate(Bullet);

@@ -10,25 +10,19 @@ public class ShipSpeedScript : MonoBehaviour
     public double currentSpeed = 0;
     public Text currentSpeedText;
 
-    private Vector2 oldShipPos;
-
-
+    private double oldSpeed;
     void Start ()
     {
         currentSpeed = startingSpeed;
-        oldShipPos = shipRigidBody2D.position;
     }
 
 	void Update ()
     {
-        Vector2 shipPos = shipRigidBody2D.position;
-        if (shipPos.x != oldShipPos.x || shipPos.y != oldShipPos.y)
-        {
-            double currentShipForce = ShipMovement.currentShipForce;
-            currentSpeed = getCurrentSpeed(currentShipForce);
-        }
+        double currentShipForce = ShipMovement.currentShipForce;
+        currentSpeed = Math.Round(getCurrentSpeed(currentShipForce),2);
         currentSpeedText.text = Math.Round(currentSpeed, 2).ToString();
-        oldShipPos = shipPos;
+        SoundManager.instance.PlaySnailSound(currentSpeed);
+        oldSpeed = currentSpeed;
     }
 
     private double getCurrentSpeed(double currentShipForce)
