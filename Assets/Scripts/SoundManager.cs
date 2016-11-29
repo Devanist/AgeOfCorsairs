@@ -34,22 +34,15 @@ public class SoundManager : MonoBehaviour
     //////// base methods
     private void PlaySingle(AudioSource efxSource, AudioClip clip, bool isRandomPitch)
     {
-        if (GameStateController.gameState == GameStateController.GameState.PLAYING)
+        if (isRandomPitch)
         {
-            if (isRandomPitch)
-            {
-                float randomPitch = UnityEngine.Random.Range(lowPitchRange, highPitchRange);
-                efxSource.pitch = randomPitch;
-            }
-            else efxSource.pitch = 1;
+            float randomPitch = UnityEngine.Random.Range(lowPitchRange, highPitchRange);
+            efxSource.pitch = randomPitch;
+        }
+        else efxSource.pitch = 1;
 
-            efxSource.clip = clip;
-            efxSource.Play();
-        }
-        else
-        {
-            efxSource.Pause();
-        }
+        efxSource.clip = clip;
+        efxSource.Play();
     }
 
     private void StopPlaying(AudioSource efxSource)
@@ -61,6 +54,11 @@ public class SoundManager : MonoBehaviour
     private double oldSpeed;
     internal void PlaySnailSound(double currentSpeed)
     {
+        if (GameStateController.gameState == GameStateController.GameState.PAUSED)
+        {
+            currentSpeed = 0;
+        }
+
         if (currentSpeed != 0)
         {
             if (oldSpeed == 0)
