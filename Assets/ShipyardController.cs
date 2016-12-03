@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using Assets.Models;
+using System;
 
 public class ShipyardController : MonoBehaviour {
 
@@ -75,5 +76,48 @@ public class ShipyardController : MonoBehaviour {
             calculateRepairCosts();
 
         }
+    }
+
+    public void BuyUpgrade(string updateName) {
+
+        int cost = 0;
+
+        switch (updateName) {
+            case "Hardened body":
+                cost = 500;
+                break;
+            case "Swivel guns":
+                cost = 450;
+                break;
+            case "Bow cannons":
+                cost = 350;
+                break;
+            case "Stern cannons":
+                cost = 350;
+                break;
+            case "Cotton sails":
+                cost = 400;
+                break;
+            default:
+                throw new System.Exception("NO UPDATE LIKE: " + updateName);
+        }
+
+        if (Player.GetComponent<Wallet>().CashAmount >= cost && !Player.GetComponent<ShipStats>().isApplied(updateName)) {
+            Player.GetComponent<Wallet>().ChangeAmount(-cost);
+            Player.GetComponent<ShipStats>().apply(updateName);
+
+            prepareButtons();
+        }
+
+    }
+
+    public void prepareButtons() {
+
+        foreach (string s in Player.GetComponent<ShipStats>().UpgradesNames()) {
+            if (Player.GetComponent<ShipStats>().isApplied(s)) {
+                GameObject.Find(s+" Button").GetComponent<Button>().interactable = false;
+            }
+        }
+
     }
 }

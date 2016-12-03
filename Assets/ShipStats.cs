@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class ShipStats : MonoBehaviour {
 
     private List<Upgrade> Upgrades;
-    string[] UpgradeNames = {
+    private string[] _UpgradeNames = {
         "Hardened body",
         "Swivel guns",
         "Bow cannons",
@@ -27,7 +27,7 @@ public class ShipStats : MonoBehaviour {
     void Start () {
 
         Upgrades = new List<Upgrade>();
-        foreach (var item in UpgradeNames) {
+        foreach (var item in _UpgradeNames) {
             Upgrades.Add(new Upgrade(item));
         }
 
@@ -58,8 +58,29 @@ public class ShipStats : MonoBehaviour {
 	
 	}
 
+    public string[] UpgradesNames() {
+        return _UpgradeNames;
+    }
+
     public float Endurance() {
         return _Endurance;
+    }
+
+    public bool isApplied(string s) {
+        foreach(Upgrade item in Upgrades) {
+            if(item.name() == s) {
+                return item.isApplied();
+            }
+        }
+        throw new System.Exception("NO_UPDATE_LIKE: " + s);
+    }
+
+    public void apply(string s) {
+        foreach(Upgrade item in Upgrades) {
+            if(item.name() == s) {
+                item.apply();
+            }
+        }
     }
 
     void UpdateStats() {

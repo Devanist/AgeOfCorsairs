@@ -111,6 +111,7 @@ public class CityMenuController : MonoBehaviour {
     public void openShipyardMenu() {
         shipyardMenu.SetActive(true);
         GameObject.Find("ShipyardMenu").GetComponent<ShipyardController>().calculateRepairCosts();
+        GameObject.Find("ShipyardMenu").GetComponent<ShipyardController>().prepareButtons();
         ButtonBlocker.SetActive(true);
     }
 
